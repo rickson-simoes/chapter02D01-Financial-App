@@ -37,7 +37,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       const { status, data } = await api.get(`products/${productId}`);
 
       if (status === 200) {
-        setCart([...cart, data])
+        setCart([...cart, data]);
+        localStorage.setItem('@RocketShoes:cart', JSON.stringify([...cart, data]));
       }
     } catch {      
       // toast.error('Quantidade solicitada fora de estoque');
